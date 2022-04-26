@@ -36,8 +36,24 @@ export interface AboutContent {
     aboutSectionContent: AboutSectionContent
 }
 
-interface ContentfulMedia {
+export interface ContentfulMedia {
     url: string,
     title: string,
     description: string,
+}
+
+export interface WorkBeforeAfter {
+    projectName: String,
+    beforeMedia: ContentfulMedia[],
+    afterMedia: ContentfulMedia[],
+}
+
+export interface WorkContent {
+    title: string,
+    workBeforeAfter: WorkBeforeAfter[],
+}
+
+export interface WorkCarouselContent {
+    isBefore: boolean,
+    media: ContentfulMedia[],
 }

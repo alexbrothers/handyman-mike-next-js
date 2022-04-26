@@ -1,5 +1,5 @@
 import { createClient, ContentfulClientApi } from 'contentful';
-import { AboutContent, HeaderContent, HomeContent } from '../utils/types';
+import { AboutContent, HeaderContent, HomeContent, WorkContent } from '../utils/types';
 
 class ContentfulClient {
     private client: ContentfulClientApi;
@@ -68,6 +68,36 @@ class ContentfulClient {
                 },
                 aboutText: aboutContent.aboutSection.fields.aboutText,
             }
+        }
+    }
+
+    async getWorkContent(): Promise<WorkContent> {
+        const workContentResponse = await this.client.getEntries({
+            content_type: "work",
+            limit: 1,
+        });
+        const workContent: any = workContentResponse.items[0].fields;
+        return {
+            title: workContent.title,
+            workBeforeAfter: workContent.workBeforeAfter.map(function(item: any) {
+                return {
+                    projectName: item.fields.projectName,
+                    beforeMedia: item.fields.beforeMedia.map(function(beforeMediaItem: any) {
+                        return {
+                            url: beforeMediaItem.fields.file.url,
+                            title: beforeMediaItem.fields.title,
+                            description: beforeMediaItem.fields.description,
+                        }
+                    }),
+                    afterMedia: item.fields.afterMedia.map(function(afterMediaItem: any) {
+                        return {
+                            url: afterMediaItem.fields.file.url,
+                            title: afterMediaItem.fields.title,
+                            description: afterMediaItem.fields.description,
+                        }
+                    })
+                }
+            })
         }
     }
 }
