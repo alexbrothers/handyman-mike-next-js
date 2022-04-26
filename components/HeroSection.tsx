@@ -65,9 +65,6 @@ export default function HeroSection(props: HomeContent) {
                     component="a"
                     variant="contained"
                     size="large"
-                    sx={{
-                        color: "background.default"
-                    }}
                   >
                       {props.callToActionButtonText}
                   </Button>

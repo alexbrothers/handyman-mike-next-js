@@ -24,6 +24,7 @@ export interface SectionHeaderProps {
     name: string,
     component: Component,
     gutterBottom?: boolean,
+    underline?: boolean,
 }
 
 interface AboutSectionContent {
@@ -56,4 +57,15 @@ export interface WorkContent {
 export interface WorkCarouselContent {
     isBefore: boolean,
     media: ContentfulMedia[],
+}
+
+export interface SeoContent {
+    title: string,
+    description: string,
+}
+
+export interface ContactContent {
+    header: string,
+    slug: string,
+    seo: SeoContent,
 }

@@ -1,5 +1,5 @@
 import { createClient, ContentfulClientApi } from 'contentful';
-import { AboutContent, HeaderContent, HomeContent, WorkContent } from '../utils/types';
+import { AboutContent, ContactContent, HeaderContent, HomeContent, WorkContent } from '../utils/types';
 
 class ContentfulClient {
     private client: ContentfulClientApi;
@@ -98,6 +98,22 @@ class ContentfulClient {
                     })
                 }
             })
+        }
+    }
+
+    async getContactContent(): Promise<ContactContent> {
+        const contactContentResponse = await this.client.getEntries({
+            content_type: "contact",
+            limit: 1,
+        });
+        const contactContent: any = contactContentResponse.items[0].fields;
+        return {
+            header: contactContent.header,
+            slug: contactContent.slug,
+            seo: {
+                title: contactContent.seo.fields.title,
+                description: contactContent.seo.fields.description,
+            }
         }
     }
 }

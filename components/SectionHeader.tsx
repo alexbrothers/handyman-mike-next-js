@@ -14,12 +14,12 @@ export default function SectionHeader(props: SectionHeaderProps) {
             >
                 {props.name}
             </Typography>
-            <Box component="div" sx={{
+            {props.underline || props.underline == undefined && (<Box component="div" sx={{
                 width: "30%",
                 height: "5px",
                 marginTop: "5px", 
                 backgroundColor: "primary.main"
-            }} />
+            }} />)}
         </Box>
     )
 }
