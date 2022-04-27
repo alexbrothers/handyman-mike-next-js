@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       },
       primary: {
         main: "#F06500",
+        dark: "#22252e"
       }
     }
   });

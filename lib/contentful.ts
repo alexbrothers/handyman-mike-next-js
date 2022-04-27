@@ -57,7 +57,12 @@ class ContentfulClient {
             content_type: "about",
             limit: 1,
         });
+        const servicesContentResponse = await this.client.getEntries({
+            content_type: "servicesSection",
+            limit: 1,
+        })
         const aboutContent: any = aboutContentResponse.items[0].fields;
+        const servicesContent: any = servicesContentResponse.items[0].fields;
         return {
             aboutSectionContent: {
                 title: aboutContent.aboutSection.fields.title,
@@ -67,6 +72,16 @@ class ContentfulClient {
                     url: aboutContent.aboutSection.fields.headShot.fields.file.url,
                 },
                 aboutText: aboutContent.aboutSection.fields.aboutText,
+            },
+            servicesSectionContent: {
+                header: servicesContent.header,
+                services: servicesContent.services.map(function(service: any) {
+                    return {
+                        name: service.fields.name,
+                        subServices: service.fields.subServices,
+                        icon: service.fields.icon,
+                    }
+                })
             }
         }
     }

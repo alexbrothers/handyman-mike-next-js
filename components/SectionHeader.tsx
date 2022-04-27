@@ -5,6 +5,7 @@ export default function SectionHeader(props: SectionHeaderProps) {
     const styles = {
         paddingTop: "30px", 
         paddingBottom: props.gutterBottom ? "15px" : "50px",
+        marginTop: props.gutterTop ? "80px" : "5px",
     };
     return (
         <Box sx={styles}>

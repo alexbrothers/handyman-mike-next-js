@@ -25,6 +25,7 @@ export interface SectionHeaderProps {
     component: Component,
     gutterBottom?: boolean,
     underline?: boolean,
+    gutterTop?: boolean,
 }
 
 interface AboutSectionContent {
@@ -34,7 +35,8 @@ interface AboutSectionContent {
 }
 
 export interface AboutContent {
-    aboutSectionContent: AboutSectionContent
+    aboutSectionContent: AboutSectionContent,
+    servicesSectionContent: ServicesSectionContent,
 }
 
 export interface ContentfulMedia {
@@ -68,4 +70,19 @@ export interface ContactContent {
     header: string,
     slug: string,
     seo: SeoContent,
+}
+
+export interface ServiceCardProps {
+    name: string,
+    subServices: string[],
+    icon: string,
+}
+
+export interface ServicesSectionContent {
+    header: string,
+    services: ServiceCardProps[],
+}
+
+export interface DynamicIconProps {
+    name: string,
 }

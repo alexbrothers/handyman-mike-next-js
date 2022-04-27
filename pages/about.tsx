@@ -1,10 +1,11 @@
 import SectionContainer from '../components/SectionContainer';
 import type {GetStaticProps } from 'next';
 import { ContentfulClientFactory } from '../lib/contentful';
-import { AboutContent } from '../utils/types';
+import { AboutContent, ServiceCardProps } from '../utils/types';
 import SectionHeader from '../components/SectionHeader';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
+import ServiceCard from '../components/ServiceCard';
 
 const MAX_IMAGE_WIDTH = 366;
 const MAX_IMAGE_HEIGHT = 450;
@@ -56,6 +57,22 @@ const About = (props: AboutContent) => {
             <Typography paragraph>
                 {props.aboutSectionContent.aboutText}
             </Typography>
+        </Box>
+        <SectionHeader name={props.servicesSectionContent.header} component="h1" gutterTop />
+        <Box sx={{
+            display: "grid",
+            justifyContent: "center",
+            gridTemplateColumns: {
+                xs: "1fr",
+                md: "1fr 1fr 1fr",
+            },
+            gridGap: "35px",
+        }}>
+            {props.servicesSectionContent.services.map(function(props: ServiceCardProps) {
+                return (
+                    <ServiceCard name={props.name} subServices={props.subServices} icon={props.icon} />
+                );
+            })}
         </Box>
     </SectionContainer>
   )
