@@ -54,6 +54,8 @@ const About = (props: AboutContent) => {
                     style={{
                         borderRadius: "50%"
                     }}
+                    placeholder="blur"
+                    blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8kMpQDwAFeAHWPyptaQAAAABJRU5ErkJggg=='
                 />
             </Box>
             <Typography paragraph>
