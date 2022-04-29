@@ -60,7 +60,7 @@ function WorkCarousel(props: WorkCarouselContent) {
         >
             {props.media.map(function(media: ContentfulMedia, index) {
                 return (
-                    <Box component="img" src={props.media[index].url} sx={{
+                    <Box key={media.title} component="img" src={props.media[index].url} sx={{
                         height: 400,
                         display: 'block',
                         maxWidth: 600,

@@ -72,7 +72,7 @@ const About = (props: AboutContent) => {
         }}>
             {props.servicesSectionContent.services.map(function(props: ServiceCardProps) {
                 return (
-                    <ServiceCard name={props.name} subServices={props.subServices} icon={props.icon} />
+                    <ServiceCard key={props.name} name={props.name} subServices={props.subServices} icon={props.icon} />
                 );
             })}
         </Box>

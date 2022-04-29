@@ -33,7 +33,7 @@ const Home = (props: HomeProps) => {
       }}>
         {props.recentReviews.map(function(review: ReviewCardContent) {
           return (
-            <ReviewCard firstName={review.firstName} stars={review.stars} review={review.review} />
+            <ReviewCard key={review.firstName} firstName={review.firstName} stars={review.stars} review={review.review} />
           )
         })}
       </Box>

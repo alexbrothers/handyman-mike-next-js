@@ -24,7 +24,7 @@ const Reviews = (props: ReviewsProps) => {
                 marginBottom: "40px"
             }}>
                 {props.reviews.map(function(review: ReviewCardContent) {
-                    return <ReviewCard firstName={review.firstName} stars={review.stars} review={review.review} />
+                    return <ReviewCard key={review.firstName} firstName={review.firstName} stars={review.stars} review={review.review} />
                 })}
             </Box>
             <Box sx={{

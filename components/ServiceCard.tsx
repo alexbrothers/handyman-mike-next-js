@@ -24,7 +24,7 @@ export default function ServiceCard(props: ServiceCardProps) {
             }}>
                 {props.subServices.map(function(subService: string) {
                     return (
-                        <Box component="li" sx={{
+                        <Box key={subService} component="li" sx={{
                             position: "relative",
                             paddingLeft: "20px",
                             lineHeight: "40px",

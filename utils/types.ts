@@ -48,7 +48,7 @@ export interface ContentfulMedia {
 }
 
 export interface WorkBeforeAfter {
-    projectName: String,
+    projectName: string,
     beforeMedia: ContentfulMedia[],
     afterMedia: ContentfulMedia[],
 }

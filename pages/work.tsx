@@ -14,7 +14,8 @@ const Work = (props: WorkContent) => {
           <SectionHeader name={props.title} component="h1" />
           {props.workBeforeAfter.map(function(item: WorkBeforeAfter) {
               return (
-                  <WorkProject 
+                  <WorkProject
+                      key={item.projectName}
                       projectName={item.projectName} 
                       beforeMedia={item.beforeMedia} 
                       afterMedia={item.afterMedia} 
