@@ -7,6 +7,7 @@ import validator from 'validator';
 import Head from 'next/head';
 import { ContactContent } from "../utils/types";
 import { ContentfulClientFactory } from "../lib/contentful";
+import Seo from "../components/Seo";
 
 interface FormErrors {
     name: boolean,
@@ -15,9 +16,6 @@ interface FormErrors {
 }
 
 export default function Contact(props: ContactContent) {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.yaymike.com";
-    const canonicalUrl = process.env.NEXT_PUBLIC_CANONICAL_URL || "https://www.yaymike.com";
-
     const [nameValue, setNameValue] = React.useState<string>('');
     const [emailValue, setEmailValue] = React.useState<string>('');
     const [messageValue, setMessageValue] = React.useState<string>('');
@@ -122,35 +120,7 @@ export default function Contact(props: ContactContent) {
 
     return (
         <>
-            <Head>
-                <title>{props.seo.title}</title>
-                <meta
-                    name="description"
-                    content={props.seo.description}
-                    key="desc"
-                />
-                <meta
-                    property="og:title"
-                    content={props.seo.title}
-                />
-                <meta
-                    property="og:description"
-                    content={props.seo.description}
-                />
-                <meta
-                    property="og:image"
-                    content={`${baseUrl}/handyman_mike_logo_light.png`}
-                />
-                <meta
-                    property="og:url"
-                    content={`${canonicalUrl}/contact`}
-                />
-                <link
-                    rel="canonical"
-                    href={`${canonicalUrl}/contact`}
-                    key="canonical"
-                />
-            </Head>
+            <Seo title={props.seo.title} description={props.seo.description} page="contact" />
             <SectionContainer>
                 <Box sx={{
                     display: "flex",

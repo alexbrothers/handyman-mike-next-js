@@ -4,6 +4,7 @@ export interface HomeContent {
     heroText: string,
     callToActionButtonText: string,
     subCallToActionButtonText: string,
+    seo: SeoContent,
 }
 
 export interface HeaderLink {
@@ -37,6 +38,7 @@ interface AboutSectionContent {
 export interface AboutContent {
     aboutSectionContent: AboutSectionContent,
     servicesSectionContent: ServicesSectionContent,
+    seo: SeoContent,
 }
 
 export interface ContentfulMedia {
@@ -54,6 +56,7 @@ export interface WorkBeforeAfter {
 export interface WorkContent {
     title: string,
     workBeforeAfter: WorkBeforeAfter[],
+    seo: SeoContent,
 }
 
 export interface WorkCarouselContent {
@@ -85,4 +88,29 @@ export interface ServicesSectionContent {
 
 export interface DynamicIconProps {
     name: string,
+}
+
+export interface ReviewCardContent {
+    firstName: string,
+    stars: number,
+    review: string,
+}
+
+export interface ReviewsProps extends ReviewContentfulContent {
+    reviews: ReviewCardContent[],
+}
+
+export interface ReviewContentfulContent {
+    seo: SeoContent,
+    header: string,
+    slug: string,
+    leaveReviewCallToAction: string,
+}
+
+export interface SeoProps extends SeoContent {
+    page: string
+}
+
+export interface HomeProps extends HomeContent {
+    recentReviews: ReviewCardContent[],
 }

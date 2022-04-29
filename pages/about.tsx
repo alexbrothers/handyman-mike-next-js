@@ -6,6 +6,7 @@ import SectionHeader from '../components/SectionHeader';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import ServiceCard from '../components/ServiceCard';
+import Seo from '../components/Seo';
 
 const MAX_IMAGE_WIDTH = 366;
 const MAX_IMAGE_HEIGHT = 450;
@@ -15,6 +16,7 @@ const MAX_IMAGE_HEIGHT_MOBILE = 300;
 const About = (props: AboutContent) => {
   return (
     <SectionContainer>
+        <Seo title={props.seo.title} description={props.seo.description} page="about" />
         <SectionHeader name={props.aboutSectionContent.title} component="h1" />
         <Box sx={{
             display: "flex",

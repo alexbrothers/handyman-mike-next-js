@@ -3,23 +3,26 @@ import type {GetStaticProps } from 'next';
 import { ContentfulClientFactory } from '../lib/contentful';
 import { WorkBeforeAfter, WorkContent } from '../utils/types';
 import SectionHeader from '../components/SectionHeader';
-import WorkCarousel from '../components/WorkCarousel';
 import WorkProject from '../components/WorkProject';
+import Seo from '../components/Seo';
 
 const Work = (props: WorkContent) => {
   return (
-    <SectionContainer>
-        <SectionHeader name={props.title} component="h1" />
-        {props.workBeforeAfter.map(function(item: WorkBeforeAfter) {
-            return (
-                <WorkProject 
-                    projectName={item.projectName} 
-                    beforeMedia={item.beforeMedia} 
-                    afterMedia={item.afterMedia} 
-                />
-            )
-        })}
-    </SectionContainer>
+    <>
+      <Seo title={props.seo.title} description={props.seo.description} page="work" />
+      <SectionContainer>
+          <SectionHeader name={props.title} component="h1" />
+          {props.workBeforeAfter.map(function(item: WorkBeforeAfter) {
+              return (
+                  <WorkProject 
+                      projectName={item.projectName} 
+                      beforeMedia={item.beforeMedia} 
+                      afterMedia={item.afterMedia} 
+                  />
+              )
+          })}
+      </SectionContainer>
+    </>
   )
 }
 

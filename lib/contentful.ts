@@ -1,5 +1,5 @@
 import { createClient, ContentfulClientApi } from 'contentful';
-import { AboutContent, ContactContent, HeaderContent, HomeContent, WorkContent } from '../utils/types';
+import { AboutContent, ContactContent, HeaderContent, HomeContent, ReviewCardContent, ReviewContentfulContent, WorkContent } from '../utils/types';
 
 class ContentfulClient {
     private client: ContentfulClientApi;
@@ -49,6 +49,10 @@ class ContentfulClient {
             heroText: homeContent.heroText,
             callToActionButtonText: homeContent.callToActionButtonText,
             subCallToActionButtonText: homeContent.subCallToActionButtonText,
+            seo: {
+                title: homeContent.seo.fields.title,
+                description: homeContent.seo.fields.description,
+            }
         }
     }
 
@@ -82,6 +86,10 @@ class ContentfulClient {
                         icon: service.fields.icon,
                     }
                 })
+            },
+            seo: {
+                title: aboutContent.seo.fields.title,
+                description: aboutContent.seo.fields.description,
             }
         }
     }
@@ -112,7 +120,11 @@ class ContentfulClient {
                         }
                     })
                 }
-            })
+            }),
+            seo: {
+                title: workContent.seo.fields.title,
+                description: workContent.seo.fields.description,
+            }
         }
     }
 
@@ -128,6 +140,38 @@ class ContentfulClient {
             seo: {
                 title: contactContent.seo.fields.title,
                 description: contactContent.seo.fields.description,
+            }
+        }
+    }
+
+    getFakeReviewData(): ReviewCardContent[] {
+        return [
+            {
+                firstName: "Alex",
+                stars: 5,
+                review: "Mike has done several jobs for me, and for all jobs he was extremely professional, on time, and provided excellent work. The fan installation he did for me was quick and easy (for him) and he also helped but together a bedframe for me. I am 100% calling Mike for my next project."
+            },
+            {
+                firstName: "Krystal",
+                stars: 5,
+                review: "Mike was great! Very responsive and timely. He mounted a TV for me and hung numerous decorative wall items, including a very large mirror. All done with care and all done properly.  I will have many other needs in the future and I will certainly call Mike. Highly recommend!"
+            }
+        ]
+    }
+
+    async getReviewsContent(): Promise<ReviewContentfulContent> {
+        const reviewsContentResponse = await this.client.getEntries({
+            content_type: "reviews",
+            limit: 1,
+        });
+        const reviewsContent: any = reviewsContentResponse.items[0].fields;
+        return {
+            header: reviewsContent.header,
+            slug: reviewsContent.slug,
+            leaveReviewCallToAction: reviewsContent.leaveReviewCallToAction,
+            seo: {
+                title: reviewsContent.seo.fields.title,
+                description: reviewsContent.seo.fields.description,
             }
         }
     }

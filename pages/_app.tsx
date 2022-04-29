@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css';
 import { Container, CssBaseline } from '@mui/material';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import HideAppBar from '../components/AppBar';
+import Footer from '../components/Footer';
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -36,6 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Container>
           <Component {...pageProps} />
         </Container>
+        <Footer />
       </ThemeProvider>
     </>
   )

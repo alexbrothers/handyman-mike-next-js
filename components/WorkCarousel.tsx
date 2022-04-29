@@ -31,7 +31,7 @@ function WorkCarousel(props: WorkCarouselContent) {
   };
 
   return (
-    <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 600, flexGrow: 1, flex: 1 }}>
       <Box sx={{
           height: 400,
           display: 'block',
