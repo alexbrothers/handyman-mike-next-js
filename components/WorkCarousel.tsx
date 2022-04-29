@@ -61,26 +61,24 @@ function WorkCarousel(props: WorkCarouselContent) {
         >
             {props.media.map(function(media: ContentfulMedia, index) {
                 return (
-                  <Image
-                    alt={media.title} 
-                    src={`https:${media.url}`}
-                    layout="responsive"
-                    width={600}
-                    height={400}
-                    objectFit="contain"
-                    quality={100}
-                    placeholder="blur"
-                    blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8kMpQDwAFeAHWPyptaQAAAABJRU5ErkJggg=='
-                />
-                    // <Box component="img" src={props.media[index].url} sx={{
-                    //     height: 400,
-                    //     display: 'block',
-                    //     maxWidth: 600,
-                    //     overflow: 'hidden',
-                    //     width: '100%',
-                    //     objectFit: "contain"
-                    // }}
-                    // />
+                  <Box sx={{
+                    height: 400,
+                    display: "flex",
+                    maxWidth: 500,
+                    overflow: "hidden",
+                    width: "100%"
+                  }}>
+                    <Image
+                        alt={media.title} 
+                        src={`https:${media.url}`}
+                        width={600}
+                        height={400}
+                        objectFit="contain"
+                        quality={100}
+                        placeholder="blur"
+                        blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8kMpQDwAFeAHWPyptaQAAAABJRU5ErkJggg=='
+                    />
+                  </Box>
                 )
             })}
         </AutoPlaySwipeableViews>
