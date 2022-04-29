@@ -25,7 +25,7 @@ export default function HeroSection(props: HomeContent) {
             {props.headline}
           </Typography>
           <Typography 
-            variant="h3"
+            variant="h4"
             component="h2"
             sx={{
                 paddingTop: PADDING,
@@ -40,7 +40,7 @@ export default function HeroSection(props: HomeContent) {
             sx={{
                 paddingTop: PADDING,
                 paddingBottom: PADDING,
-                fontSize: "1.2rem"
+                fontSize: "1.1rem"
             }}
           >
               {props.heroText}
