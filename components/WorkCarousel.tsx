@@ -10,6 +10,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { ContentfulMedia, WorkCarouselContent } from '../utils/types';
+import Image from 'next/image';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -60,15 +61,26 @@ function WorkCarousel(props: WorkCarouselContent) {
         >
             {props.media.map(function(media: ContentfulMedia, index) {
                 return (
-                    <Box component="img" src={props.media[index].url} sx={{
-                        height: 400,
-                        display: 'block',
-                        maxWidth: 600,
-                        overflow: 'hidden',
-                        width: '100%',
-                        objectFit: "contain"
-                    }}
-                    />
+                  <Image
+                    alt={media.title} 
+                    src={`https:${media.url}`}
+                    layout="responsive"
+                    width={600}
+                    height={400}
+                    objectFit="contain"
+                    quality={100}
+                    placeholder="blur"
+                    blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8kMpQDwAFeAHWPyptaQAAAABJRU5ErkJggg=='
+                />
+                    // <Box component="img" src={props.media[index].url} sx={{
+                    //     height: 400,
+                    //     display: 'block',
+                    //     maxWidth: 600,
+                    //     overflow: 'hidden',
+                    //     width: '100%',
+                    //     objectFit: "contain"
+                    // }}
+                    // />
                 )
             })}
         </AutoPlaySwipeableViews>

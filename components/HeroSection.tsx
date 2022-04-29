@@ -35,12 +35,12 @@ export default function HeroSection(props: HomeContent) {
           >
               {props.subHeadline}
           </Typography>
-          <Typography 
-            variant="h6" 
+          <Typography  
             paragraph
             sx={{
                 paddingTop: PADDING,
                 paddingBottom: PADDING,
+                fontSize: "1.2rem"
             }}
           >
               {props.heroText}
