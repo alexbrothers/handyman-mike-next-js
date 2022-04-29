@@ -55,7 +55,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     from: `${contactRequest.name} <${emailBotUsername}>`,
     to: emailBotDestinationEmail,
     replyTo: contactRequest.replyTo,
-    subject: `Contact form sent from yaymike.com by ${contactRequest.name}`,
+    subject: `Contact form submitted on yaymike.com by ${contactRequest.name}`,
     text: contactRequest.message,
   }
   try {
