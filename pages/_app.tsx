@@ -34,10 +34,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Script
+        id="google2"
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsTag}`}
       />
-      <Script strategy="lazyOnload">
+      <Script id="google1" strategy="lazyOnload">
         {
           `
           window.dataLayer = window.dataLayer || [];
