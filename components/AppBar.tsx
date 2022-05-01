@@ -194,8 +194,7 @@ export default function HideAppBar() {
       </HideOnScroll>
       <Toolbar sx={{
           paddingTop: "10px",
-          paddingBottom: "10px",
-          backgroundColor: "red"
+          paddingBottom: "10px"
       }} 
       />
     </React.Fragment>
