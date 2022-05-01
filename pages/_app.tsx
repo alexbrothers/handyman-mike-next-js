@@ -7,6 +7,7 @@ import { Container, CssBaseline } from '@mui/material';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import HideAppBar from '../components/AppBar';
 import Footer from '../components/Footer';
+import Script from 'next/script';
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -28,9 +29,25 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   });
   theme = responsiveFontSizes(theme);
+  const googleAnalyticsTag = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TAG;
 
   return (
     <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsTag}`}
+      />
+      <Script strategy="lazyOnload">
+        {
+          `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', '${googleAnalyticsTag}');
+          `
+        }
+      </Script>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <HideAppBar />
