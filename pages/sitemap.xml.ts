@@ -12,6 +12,9 @@ function generateSiteMap() {
             <loc>${baseUrl}/about</loc>
         </url>
         <url>
+            <loc>${baseUrl}/services</loc>
+        </url>
+        <url>
             <loc>${baseUrl}/work</loc>
         </url>
         <url>

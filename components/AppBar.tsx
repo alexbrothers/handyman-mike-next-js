@@ -27,6 +27,10 @@ const pages: PageLink[] = [
     link: "/about",
   },
   {
+    name: "Services",
+    link: "/services",
+  },
+  {
     name: "Work",
     link: "/work",
   },
@@ -91,8 +95,8 @@ export default function HideAppBar() {
                 <Image
                     src="/handyman_mike_logo_light.png"
                     alt="Handyman Mike Logo"
-                    width="79.81"
-                    height="64"
+                    width="68.59"
+                    height="55"
                 />
                 <Typography variant="h5">
                     Handyman Mike, LLC
@@ -105,7 +109,7 @@ export default function HideAppBar() {
                 },
                 justifyContent: "center",
                 alignItems: "center",
-                columnGap: "50px",
+                columnGap: "34px",
                 "a": {
                   color: "text.primary",
                   textDecoration: "none",
@@ -129,8 +133,8 @@ export default function HideAppBar() {
                 <Image
                     src="/handyman_mike_logo_light.png"
                     alt="Handyman Mike Logo"
-                    width="79.81"
-                    height="64"
+                    width="68.59"
+                    height="55"
                 />
               </Box>
               <Box sx={{

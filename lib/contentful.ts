@@ -1,5 +1,5 @@
 import { createClient, ContentfulClientApi } from 'contentful';
-import { AboutContent, ContactContent, HeaderContent, HomeContent, ReviewCardContent, ReviewContentfulContent, WorkContent } from '../utils/types';
+import { AboutContent, ContactContent, HeaderContent, HomeContent, ReviewCardContent, ReviewContentfulContent, ServicesPageContent, WorkContent } from '../utils/types';
 
 class ContentfulClient {
     private client: ContentfulClientApi;
@@ -49,6 +49,7 @@ class ContentfulClient {
             heroText: homeContent.heroText,
             callToActionButtonText: homeContent.callToActionButtonText,
             subCallToActionButtonText: homeContent.subCallToActionButtonText,
+            leaveReviewCallToAction: homeContent.leaveReviewCallToAction,
             seo: {
                 title: homeContent.seo.fields.title,
                 description: homeContent.seo.fields.description,
@@ -61,12 +62,7 @@ class ContentfulClient {
             content_type: "about",
             limit: 1,
         });
-        const servicesContentResponse = await this.client.getEntries({
-            content_type: "servicesSection",
-            limit: 1,
-        })
         const aboutContent: any = aboutContentResponse.items[0].fields;
-        const servicesContent: any = servicesContentResponse.items[0].fields;
         return {
             aboutSectionContent: {
                 title: aboutContent.aboutSection.fields.title,
@@ -76,16 +72,6 @@ class ContentfulClient {
                     url: aboutContent.aboutSection.fields.headShot.fields.file.url,
                 },
                 aboutText: aboutContent.aboutSection.fields.aboutText,
-            },
-            servicesSectionContent: {
-                header: servicesContent.header,
-                services: servicesContent.services.map(function(service: any) {
-                    return {
-                        name: service.fields.name,
-                        subServices: service.fields.subServices,
-                        icon: service.fields.icon,
-                    }
-                })
             },
             seo: {
                 title: aboutContent.seo.fields.title,
@@ -173,6 +159,30 @@ class ContentfulClient {
                 title: reviewsContent.seo.fields.title,
                 description: reviewsContent.seo.fields.description,
             }
+        }
+    }
+
+    async getServicesPageContent(): Promise<ServicesPageContent> {
+        const servicesContentResponse = await this.client.getEntries({
+            content_type: "services",
+            limit: 1,
+        });
+        const servicesContent: any = servicesContentResponse.items[0].fields;
+        return {
+            seo: {
+                title: servicesContent.seo.fields.title,
+                description: servicesContent.seo.fields.description,
+            },
+            servicesSectionContent: {
+                header: servicesContent.header,
+                services: servicesContent.services.map(function(service: any) {
+                    return {
+                        name: service.fields.name,
+                        subServices: service.fields.subServices,
+                        icon: service.fields.icon,
+                    }
+                })
+            },
         }
     }
 }

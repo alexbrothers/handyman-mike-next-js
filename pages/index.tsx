@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import type {GetStaticProps } from 'next';
 import HeroSection from '../components/HeroSection';
 import ReviewCard from '../components/ReviewCard';
@@ -18,6 +18,7 @@ const Home = (props: HomeProps) => {
         callToActionButtonText={props.callToActionButtonText}
         subCallToActionButtonText={props.subCallToActionButtonText}
         seo={props.seo}
+        leaveReviewCallToAction={props.leaveReviewCallToAction}
       />
       <SectionHeader name="Recent Reviews" component="h2" />
       <Box sx={{
@@ -36,6 +37,28 @@ const Home = (props: HomeProps) => {
             <ReviewCard key={review.firstName} firstName={review.firstName} stars={review.stars} review={review.review} />
           )
         })}
+      </Box>
+      <Box sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "120px",
+          marginBottom: "40px",
+          gap: "25px"
+      }}>
+          <Typography variant="h5" component="h3" textAlign="center">
+              {props.leaveReviewCallToAction}
+          </Typography>
+          <Button
+              component="a"
+              variant="contained"
+              size="large"
+              href="https://g.page/r/CVPQr4rOPtCjEAg/review"
+              target="_blank"
+          >
+              Leave a Review
+          </Button>
       </Box>
     </>
   )

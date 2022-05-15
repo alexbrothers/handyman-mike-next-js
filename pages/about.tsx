@@ -62,22 +62,6 @@ const About = (props: AboutContent) => {
                 {props.aboutSectionContent.aboutText}
             </Typography>
         </Box>
-        <SectionHeader name={props.servicesSectionContent.header} component="h1" gutterTop />
-        <Box sx={{
-            display: "grid",
-            justifyContent: "center",
-            gridTemplateColumns: {
-                xs: "1fr",
-                md: "1fr 1fr 1fr",
-            },
-            gridGap: "35px",
-        }}>
-            {props.servicesSectionContent.services.map(function(props: ServiceCardProps) {
-                return (
-                    <ServiceCard key={props.name} name={props.name} subServices={props.subServices} icon={props.icon} />
-                );
-            })}
-        </Box>
     </SectionContainer>
   )
 }

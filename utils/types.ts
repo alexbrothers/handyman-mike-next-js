@@ -5,6 +5,7 @@ export interface HomeContent {
     callToActionButtonText: string,
     subCallToActionButtonText: string,
     seo: SeoContent,
+    leaveReviewCallToAction: string,
 }
 
 export interface HeaderLink {
@@ -37,7 +38,6 @@ interface AboutSectionContent {
 
 export interface AboutContent {
     aboutSectionContent: AboutSectionContent,
-    servicesSectionContent: ServicesSectionContent,
     seo: SeoContent,
 }
 
@@ -113,4 +113,9 @@ export interface SeoProps extends SeoContent {
 
 export interface HomeProps extends HomeContent {
     recentReviews: ReviewCardContent[],
+}
+
+export interface ServicesPageContent {
+    seo: SeoContent,
+    servicesSectionContent: ServicesSectionContent
 }
