@@ -153,6 +153,7 @@ class ContentfulClient {
         const reviewsContent: any = reviewsContentResponse.items[0].fields;
         return {
             header: reviewsContent.header,
+            subHeader: reviewsContent.subHeader,
             slug: reviewsContent.slug,
             leaveReviewCallToAction: reviewsContent.leaveReviewCallToAction,
             seo: {
