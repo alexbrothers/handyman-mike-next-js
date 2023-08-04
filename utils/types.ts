@@ -103,8 +103,9 @@ export interface ReviewsProps extends ReviewContentfulContent {
 export interface ReviewContentfulContent {
     seo: SeoContent,
     header: string,
-    slug: string,
+    slug: any,
     leaveReviewCallToAction: string,
+    subHeader: any,
 }
 
 export interface SeoProps extends SeoContent {

@@ -2,10 +2,13 @@ import SectionContainer from '../components/SectionContainer';
 import type {GetStaticProps } from 'next';
 import { ContentfulClientFactory } from '../lib/contentful';
 import { ReviewCardContent, ReviewContentfulContent, ReviewsProps } from '../utils/types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS } from '@contentful/rich-text-types';
 import SectionHeader from '../components/SectionHeader';
 import { Box, Button, Typography } from '@mui/material';
 import Seo from '../components/Seo';
 import ReviewCard from '../components/ReviewCard';
+import { ReactChild, ReactFragment, ReactPortal } from 'react';
 
 const Reviews = (props: ReviewsProps) => {
   return (
@@ -13,9 +16,24 @@ const Reviews = (props: ReviewsProps) => {
         <Seo title={props.seo.title} description={props.seo.description} page="reviews" />
         <SectionContainer>
             <SectionHeader name={props.header} component="h1" />
-            <Typography variant="h5" component="h3">
-                {props.slug}
-            </Typography>
+            <Box sx={{
+                "a": {
+                    color: "primary.main",
+                    textDecoration: "none",
+                },
+                "a:hover": {
+                    textDecoration: "underline",
+                }
+            }}>
+                {documentToReactComponents(
+                    props.subHeader,
+                    {
+                        renderNode: {
+                            [BLOCKS.PARAGRAPH]: (_node: any, children: any) => <Typography variant="h5" component="h3">{children}</Typography>
+                        }
+                    }
+                )}
+            </Box>
             <Box sx={{
                 display: "flex",
                 flexDirection: "column",
