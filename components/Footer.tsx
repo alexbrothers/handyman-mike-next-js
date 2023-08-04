@@ -27,7 +27,7 @@ export default function Footer() {
                     <Typography paragraph textAlign="center" sx={{
                         marginBottom: 0
                     }}>
-                        Copyright © 2022 Handyman Mike, LLC
+                        Copyright © 2023 Handyman Mike, LLC
                     </Typography>
                     <Box sx={{
                         display: "flex",
