@@ -22,15 +22,14 @@ const Home = (props: HomeProps) => {
       />
       <SectionHeader name="Recent Reviews" component="h2" />
       <Box sx={{
-        display: "flex",
-        flexDirection: {
-          xs: "column",
-          md: "row"
+        display: "grid",
+        gridTemplateColumns: {
+          xs: "1fr",
+          md: "1fr 1fr"
         },
         justifyContent: "center",
-        alignItems: "center",
+        gridGap: "35px",
         marginBottom: "40px",
-        gap: "20px"
       }}>
         {props.recentReviews.map(function(review: ReviewCardContent) {
           return (
@@ -71,7 +70,7 @@ export const getStaticProps: GetStaticProps = async context => {
       const recentReviews: ReviewCardContent[] = contentfulClient.getFakeReviewData();
       const result: HomeProps = {
         ...homeContent,
-        recentReviews,
+        recentReviews: recentReviews.slice(recentReviews.length - 4),
       }
       return {
         props: result
