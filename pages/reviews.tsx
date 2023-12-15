@@ -35,9 +35,12 @@ const Reviews = (props: ReviewsProps) => {
                 )}
             </Box>
             <Box sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "25px",
+                display: "grid",
+                gridTemplateColumns: {
+                    xs: "1fr",
+                    md: "1fr 1fr"
+                },
+                gridGap: "35px",
                 marginTop: "40px",
                 marginBottom: "40px"
             }}>
